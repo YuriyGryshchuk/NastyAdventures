@@ -26,17 +26,20 @@ public class MoveBetweenGoals : MonoBehaviour
 
         private void Update()
     {
-        _timeWithoutDetected += Time.deltaTime;
-        Debug.Log(_timeWithoutDetected);
-        if (_timeWithoutDetected > 5)
+        if (_isTargetDetected)
         {
-            _isTargetDetected = false;
-            _timeWithoutDetected = 0;
+            _timeWithoutDetected += Time.deltaTime;
+            //Debug.Log(_timeWithoutDetected);
+            if (_timeWithoutDetected > 5)
+            {
+                _isTargetDetected = false;
+                _timeWithoutDetected = 0;
+            }
         }
-
 
         if (agent.remainingDistance < _distanceToChangeGoal)
         {
+            Debug.Log("ggg");
             if (!_isTargetDetected)
             {
                 _currentGoal++;
@@ -56,5 +59,6 @@ public class MoveBetweenGoals : MonoBehaviour
         _target = target;
         _isTargetDetected = true;
         Debug.Log("hhh");
+        _timeWithoutDetected = 0;
     }
 }
