@@ -1,25 +1,60 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 public class MoveBetweenGoals : MonoBehaviour
 {
 
-    [SerializeField] private Transform[] goals;
-    [SerializeField] private float distanceToChangeGoal;
+    [SerializeField] private Transform[] _goals;
+    [SerializeField] private float _distanceToChangeGoal;
+    [SerializeField] private TrigerToPlayer _trigerToPlayer;
     private UnityEngine.AI.NavMeshAgent agent;
-    private int currentGoal = 0;
+    private int _currentGoal = 0;
+    private Vector3 _targetPosition;
+    private bool _isTargetDetected = false;
+    private Player _target;
+    private float _timeWithoutDetected = 0;
+
+    
 
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        agent.destination = goals[0].position;
+        agent.destination = _goals[0].position;
+
+        _trigerToPlayer.TargetChanged += ChangedTarget;
     }
-    void Update()
+
+        private void Update()
     {
-        if (agent.remainingDistance < distanceToChangeGoal)
+        _timeWithoutDetected += Time.deltaTime;
+        Debug.Log(_timeWithoutDetected);
+        if (_timeWithoutDetected > 5)
         {
-            currentGoal++;
-            if (currentGoal == goals.Length) currentGoal = 0;
-            agent.destination = goals[currentGoal].position;
+            _isTargetDetected = false;
+            _timeWithoutDetected = 0;
         }
+
+
+        if (agent.remainingDistance < _distanceToChangeGoal)
+        {
+            if (!_isTargetDetected)
+            {
+                _currentGoal++;
+                if (_currentGoal == _goals.Length) _currentGoal = 0;
+                _targetPosition = _goals[_currentGoal].position;
+            } else
+            {
+                _targetPosition = _target.transform.position;
+            } 
+        }
+
+        agent.SetDestination(_targetPosition);
+    }
+
+    private void ChangedTarget(Player target)
+    {
+        _target = target;
+        _isTargetDetected = true;
+        Debug.Log("hhh");
     }
 }
