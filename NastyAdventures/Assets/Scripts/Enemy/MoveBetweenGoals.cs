@@ -6,7 +6,7 @@ public class MoveBetweenGoals : MonoBehaviour
 
     [SerializeField] private Transform[] _goals;
     [SerializeField] private float _distanceToChangeGoal;
-    [SerializeField] private TrigerToPlayer _trigerToPlayer;
+    [SerializeField] private TriggerToPlayer _triggerToPlayer;
     private UnityEngine.AI.NavMeshAgent agent;
     private int _currentGoal = 0;
     private Vector3 _targetPosition;
@@ -21,7 +21,7 @@ public class MoveBetweenGoals : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = _goals[0].position;
 
-        _trigerToPlayer.TargetChanged += ChangedTarget;
+        _triggerToPlayer.TargetChanged += ChangedTarget;
     }
 
         private void Update()
