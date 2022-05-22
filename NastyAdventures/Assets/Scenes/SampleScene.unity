@@ -939,7 +939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433168625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.11, y: 0.0049756574, z: 3.6771493}
+  m_LocalPosition: {x: 7.53, y: 0.0049756574, z: 9.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1161,9 +1161,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1633260302}
   - component: {fileID: 1633260301}
-  - component: {fileID: 1633260304}
   - component: {fileID: 1633260303}
   - component: {fileID: 1633260305}
+  - component: {fileID: 1633260307}
+  - component: {fileID: 1633260306}
+  - component: {fileID: 1633260308}
   m_Layer: 0
   m_Name: Enemy Character Controler
   m_TagString: Untagged
@@ -1228,24 +1230,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1633260304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633260300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5350c531f76004d8ca4c6c1ab3f65f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goals:
-  - {fileID: 711550006}
-  - {fileID: 141345844}
-  - {fileID: 617053325}
-  _distanceToChangeGoal: 1
-  _trigerToPlayer: {fileID: 1633260305}
 --- !u!114 &1633260305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,6 +1246,55 @@ MonoBehaviour:
   _enemyView: 45
   _enemyViewDistance: 7
   _lightDetection: {fileID: 1751572293}
+--- !u!114 &1633260306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633260300}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc1497c39cb1d749ac9ed90c4be0bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goals:
+  - {fileID: 711550006}
+  - {fileID: 141345844}
+  - {fileID: 617053325}
+  _distanceToChangeGoal: 1
+  _trigerToPlayer: {fileID: 1633260305}
+--- !u!114 &1633260307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633260300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d6642bfd0ea744abc1fed64c8affd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _states:
+  - {fileID: 1633260306}
+  - {fileID: 1633260308}
+  _target: {fileID: 1599591452}
+--- !u!114 &1633260308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633260300}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ba9f491e5b8747b1e24c3e37e1ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trigerToPlayer: {fileID: 1633260305}
+  _distanceToKillTarget: 1
+  _timeToResetPursuit: 10
 --- !u!1 &1751572291
 GameObject:
   m_ObjectHideFlags: 0
