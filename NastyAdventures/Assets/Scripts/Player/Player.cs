@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private float _mainSpeed = 10f;
     [SerializeField] private float _maxSpeed = 20f;
-    [SerializeField] private float _gravity = 9.8f;
+    [SerializeField] private float _gravity = -9.8f;
     [SerializeField] private float _massPlayer;
     [SerializeField] private float _jumpHeight = 3f;
     [SerializeField] private float _groundDistance = 0.4f;

@@ -14,6 +14,7 @@ public class TriggerToPlayer: MonoBehaviour
 
     private void LateUpdate()
     {
+
         FindTarget();
     }
 
@@ -52,11 +53,11 @@ public class TriggerToPlayer: MonoBehaviour
     {
         RaycastHit hit;
 
-        Vector3 posTarget = new Vector3(_target.transform.position.x, _target.transform.position.y + 1f, _target.transform.position.z);
+        Vector3 posTarget = new Vector3(_target.transform.position.x, _target.transform.position.y, _target.transform.position.z);
+        Vector3 posEnemyEyes = new Vector3(this.transform.position.x, this.transform.position.y + 1.2f, this.transform.position.z);
+        Debug.DrawRay(posEnemyEyes, (posTarget - transform.position).normalized * Vector3.Distance(transform.position, _target.transform.position));
 
-        Debug.DrawRay(transform.position, (posTarget - transform.position).normalized * Vector3.Distance(transform.position, _target.transform.position));
-
-        if (Physics.Raycast(transform.position, (posTarget - transform.position).normalized * Vector3.Distance(transform.position, _target.transform.position), out hit) && hit.collider.GetComponent<CharacterController>())
+        if (Physics.Raycast(posEnemyEyes, (posTarget - transform.position).normalized * Vector3.Distance(transform.position, _target.transform.position), out hit) && hit.collider.GetComponent<Player>())
         {
             return false;
         }

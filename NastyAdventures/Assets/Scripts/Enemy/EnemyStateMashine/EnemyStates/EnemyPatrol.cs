@@ -6,7 +6,7 @@ public class EnemyPatrol : State
 {
     [SerializeField] private Transform[] _goals;
     [SerializeField] private float _distanceToChangeGoal;
-    [SerializeField] private TrigerToPlayer _trigerToPlayer;
+    [SerializeField] private TriggerToPlayer _triggerToPlayer;
 
     private UnityEngine.AI.NavMeshAgent agent;
     private int _currentGoal = 0;
@@ -19,7 +19,7 @@ public class EnemyPatrol : State
         _targetPosition = _goals[0].position;
         _needTransit = false;
 
-        _trigerToPlayer.TargetChanged += ChangedTarget;
+        _triggerToPlayer.TargetChanged += ChangedTarget;
     }
 
     private void Update()
@@ -40,7 +40,7 @@ public class EnemyPatrol : State
         if(_needTransit)
         {
             StateMashine.TransitToNext();
-            _trigerToPlayer.TargetChanged -= ChangedTarget;
+            _triggerToPlayer.TargetChanged -= ChangedTarget;
         }
     }
 

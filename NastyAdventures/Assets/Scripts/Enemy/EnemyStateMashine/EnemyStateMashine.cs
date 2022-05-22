@@ -43,6 +43,7 @@ public class EnemyStateMashine : MonoBehaviour
         if (_currentState > _states.Length)
             _currentState = _states.Length;
         _needTransit = true;
+       
     }
 
     public void TransitToPrevious()
