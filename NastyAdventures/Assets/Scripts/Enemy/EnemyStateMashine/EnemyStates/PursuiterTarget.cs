@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PursuiterTarget : State
 {
-    [SerializeField] private TrigerToPlayer _trigerToPlayer;
+    [SerializeField] private TriggerToPlayer _triggerToPlayer;
     [SerializeField] private float _distanceToKillTarget;
     [SerializeField] private float _timeToResetPursuit;
 
@@ -20,7 +20,7 @@ public class PursuiterTarget : State
         _needTransitToPrevious = false;
         _timeWinhoutTarget = 0;
 
-        _trigerToPlayer.TargetChanged += ChangedTarget;
+        _triggerToPlayer.TargetChanged += ChangedTarget;
 
         CheckTransitToNext();
         CheckTransitToPrevious();
@@ -59,13 +59,13 @@ public class PursuiterTarget : State
         if (_needTransitToPrevious)
         {
             StateMashine.TransitToPrevious();
-            _trigerToPlayer.TargetChanged -= ChangedTarget;
+            _triggerToPlayer.TargetChanged -= ChangedTarget;
         }
 
         if (_needTransitToNext)
         {
             StateMashine.TransitToNext();
-            _trigerToPlayer.TargetChanged -= ChangedTarget;
+            _triggerToPlayer.TargetChanged -= ChangedTarget;
         }
     }
 
