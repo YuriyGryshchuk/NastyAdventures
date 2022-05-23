@@ -4,31 +4,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private CharacterController _player;
-    [SerializeField] private Transform _graundCheck;
-    [SerializeField] private LayerMask _groundMask;
-    [SerializeField] private float _mainSpeed = 10f;
-    [SerializeField] private float _maxSpeed = 20f;
-    [SerializeField] private float _gravity = -9.8f;
-    [SerializeField] private float _massPlayer;
+
+    public float WalkSpeed { get; private set; }
+    public float RunSpeed { get; private set; }
+    public float JumpHeight { get; private set; }
+    public float Mass { get; private set; }
+
+
+
+
+    [SerializeField] private float _walkSpeed = 10f;
+    [SerializeField] private float _runSpeed = 20f;
     [SerializeField] private float _jumpHeight = 3f;
-    [SerializeField] private float _groundDistance = 0.4f;
+    [SerializeField] private float _massPlayer;
 
-    private Vector3 _vectorToMove;
-    private bool _isGrounded;
-    private float _speed;
-
-    Mover mover = new Mover();
-
-   private void Update()
+    private void Awake()
     {
-        _isGrounded = mover.GroundedChek(_graundCheck, _groundMask, _groundDistance);
-        _speed = mover.Boosting(_mainSpeed, _maxSpeed);
-        _vectorToMove = mover.GetVectorInInput(_player, _speed);
-
-        mover.MoveToVector(_player, _vectorToMove, _speed);
-        mover.Gravity(_player, _isGrounded, _massPlayer, _gravity);
-        mover.Jumping(_jumpHeight, _isGrounded, _gravity);
-        mover.Squatting(_player);
+        WalkSpeed = _walkSpeed;
+        RunSpeed = _runSpeed;
+        JumpHeight = _jumpHeight;
+        Mass = _massPlayer;
     }
+
+
+
 }

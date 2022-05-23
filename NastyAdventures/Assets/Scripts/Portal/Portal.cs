@@ -22,9 +22,10 @@ public class Portal: MonoBehaviour
     {
         controller = other.gameObject.GetComponent<CharacterController>();
         controller.enabled = false;
-        Vector3 targetPosition = new Vector3(target.transform.position.x + exitFromPortal, target.transform.position.y, target.transform.position.z);
+        Vector3 targetPosition = new Vector3(target.transform.localPosition.x + exitFromPortal, target.transform.position.y, target.transform.position.z);
         other.gameObject.transform.position = targetPosition;
         controller.enabled = true;
+        controller.transform.rotation = target.transform.rotation;
     }
 
 }

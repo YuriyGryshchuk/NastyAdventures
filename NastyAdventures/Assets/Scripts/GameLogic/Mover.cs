@@ -34,7 +34,7 @@ public class Mover
         executor.transform.localRotation = Quaternion.LookRotation(vectorToTarget);
     }
 
-    public bool GroundedChek(Transform groundCheck, LayerMask groundMask, float groundDistance)
+    public bool GroundedCheck(Transform groundCheck, LayerMask groundMask, float groundDistance)
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
