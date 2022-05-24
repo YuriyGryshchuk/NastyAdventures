@@ -15,8 +15,11 @@ public abstract class StatsDecorator : ScriptableObject, IStatsProvider
     public void Init(IStatsProvider wrappedEntity) 
        
     {
-
-        _wrappedEntity = wrappedEntity;
+        if(_wrappedEntity != wrappedEntity)
+        {
+            _wrappedEntity = wrappedEntity;
+        }
+       
 
     }
 

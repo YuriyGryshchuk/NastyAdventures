@@ -8,27 +8,28 @@ public class CheckingAreal : State
     [SerializeField] private float _stepToRotate = 5f;
 
     private float _currentAngleRotate;
-    private float _targetAngleRotate;
-    private float _startRotate;
-    private Quaternion _currentRotate;
-    private Quaternion _rotateToTarget;
+
+    private bool isReverse;
+
 
     private void Start()
     {
-        _startRotate = transform.rotation.y; 
+        isReverse = false;
     }
+
+
     private void OnEnable()
     {
-        _rotateToTarget = _currentRotate;
-        _currentAngleRotate = transform.rotation.y;
+       
+        _currentAngleRotate = 0;
     }
        
 
     private void Update()
     {
-        ChangeTargetRotate();
+        
         RotateToTarget();
-        transform.rotation = _rotateToTarget;
+        ChangeTargetRotate();
 
 
 
@@ -36,23 +37,37 @@ public class CheckingAreal : State
 
     private void ChangeTargetRotate()
     {
-        if (_currentAngleRotate <= _stepToRotate + _angleToCheck )
+        if (!isReverse)
         {
-            _rotateToTarget = Quaternion.Inverse(_currentRotate);
+            if (_currentAngleRotate >= _angleToCheck)
+            {
+                Inverse();
+                
+            }
         }
-        if (_currentAngleRotate >= _targetAngleRotate && _currentAngleRotate > _startRotate)
+        else
         {
-            _rotateToTarget = _currentRotate;
+            if (_currentAngleRotate <= _angleToCheck)
+            {
+                Inverse();
+               
+            }
         }
+       
 
     }
 
     private void RotateToTarget()
     {
-        var stepRotate = _stepToRotate * Time.deltaTime;
-        _currentAngleRotate += stepRotate;
-        _currentRotate = Quaternion.Euler(0, _currentAngleRotate, 0);
+      
+        _currentAngleRotate += _stepToRotate * Time.deltaTime;
+        transform.rotation  = Quaternion.Euler(0, _currentAngleRotate, 0);
            
     }
-
+    private void Inverse()
+    {
+        _angleToCheck = -_angleToCheck;
+        _stepToRotate = -_stepToRotate;
+         isReverse = !isReverse;
+    }
 }
