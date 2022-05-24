@@ -15,14 +15,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpHeight = 3f;
     [SerializeField] private float _mass = 2f;
 
-    [SerializeField] HighJump highJump;
+   
 
 
     private void Awake()
     {
 
         _stats = new BasicStats(_walkSpeed, _runSpeed, _jumpHeight, _mass);
-        highJump.Init(_stats);
+    
 
     }
 
@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     }
 
 
-
+    public void SetStats(IStatsProvider stats)
+    {
+        _stats = stats;
+    }
 
 }

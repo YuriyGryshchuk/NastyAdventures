@@ -8,20 +8,21 @@ public abstract class StatsDecorator : ScriptableObject, IStatsProvider
 
     protected IStatsProvider _wrappedEntity;
 
-    //protected StatsDecorator(IStatsProvider wrappedEntity)
-    //{
-    //    _wrappedEntity = wrappedEntity;
-    //}
 
-
-   public PlayerStats GetStats()
+   
+  
+   
+    public void Init(IStatsProvider wrappedEntity) 
+       
     {
-        return GetStatsInternal();
+
+        _wrappedEntity = wrappedEntity;
+
     }
 
-    public void Init(IStatsProvider wrappedEntity) 
+    public PlayerStats GetStats()
     {
-        _wrappedEntity = wrappedEntity;
+        return GetStatsInternal();
     }
 
     protected abstract PlayerStats GetStatsInternal();

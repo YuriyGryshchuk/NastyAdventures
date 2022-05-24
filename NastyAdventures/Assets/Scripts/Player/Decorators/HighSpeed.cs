@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu]
-public class HighJump : StatsDecorator
+public class HighSpeed : StatsDecorator
 {
+    [SerializeField] private float _speedMultiplier;
 
-    [SerializeField] private float _jumpMultiplier;
 
-   
+
+
 
     protected override PlayerStats GetStatsInternal()
     {
         var stats = base._wrappedEntity.GetStats();
-        stats.JumpHeight = stats.JumpHeight * _jumpMultiplier;
+        stats.WalkSpeed = stats.WalkSpeed * _speedMultiplier;
         return stats;
 
     }
