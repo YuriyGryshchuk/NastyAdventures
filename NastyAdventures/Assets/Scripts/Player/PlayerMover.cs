@@ -30,12 +30,12 @@ public class PlayerMover : MonoBehaviour
     private void Update()
     {
         _isGrounded = _gravity.GroundedCheck(_groundCheck, _groundMask, _groundDistance);
-        _speed = _mover.Boosting(_player.WalkSpeed, _player.RunSpeed);
+        _speed = _mover.Boosting(_player.GetStats().WalkSpeed, _player.GetStats().RunSpeed);
         _vectorToMove = _mover.GetVectorInInput(_playerController, _speed);
 
         _mover.MoveToVector(_playerController, _vectorToMove, _speed);
-        _velocity = _gravity.Attract(_playerController, _velocity, _isGrounded, _player.Mass);
-        _velocity = _mover.Jumping(_player.JumpHeight, _velocity, _isGrounded, -9.8f);
+        _velocity = _gravity.Attract(_playerController, _velocity, _isGrounded, _player.GetStats().Mass);
+        _velocity = _mover.Jumping(_player.GetStats().JumpHeight, _velocity, _isGrounded, -9.8f);
       
         _mover.Squatting(_playerController);
     }
