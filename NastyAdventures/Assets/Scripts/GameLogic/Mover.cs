@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Mover
 {
-    private Vector3 _velosity;
+  
 
     public Vector3 GetVectorInInput(CharacterController executor, float speed)
     {
@@ -34,26 +34,15 @@ public class Mover
         executor.transform.localRotation = Quaternion.LookRotation(vectorToTarget);
     }
 
-    public bool GroundedCheck(Transform groundCheck, LayerMask groundMask, float groundDistance)
-    {
-        return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-    }
-    public void Gravity(CharacterController executor, bool isGrounded, float massExecutor, float gravity)
-    {
-        if (isGrounded && _velosity.y < 0)
-        {
-            _velosity.y = -2f;
-        }
-
-        _velosity.y += massExecutor * gravity * Time.deltaTime;
-        executor.Move(_velosity * Time.deltaTime);
-    }
-    public void Jumping(float jumpHeight, bool isGrounded, float gravity)
+    
+    public Vector3 Jumping(float jumpHeight, Vector3 velocity, bool isGrounded, float gravity)
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            _velosity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            
         }
+        return velocity;
     }
 
     public float Boosting(float mainSpeed, float maxSpeed)
