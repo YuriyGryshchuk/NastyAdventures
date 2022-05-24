@@ -8,20 +8,21 @@ public class CheckingAreal : State
     [SerializeField] private float _stepToRotate = 5f;
 
     private float _currentAngleRotate;
+    private bool _isReverse;
+    private float _startAngle;
 
-    private bool isReverse;
 
 
     private void Start()
     {
-        isReverse = false;
+        _startAngle = transform.rotation.y;
     }
 
 
     private void OnEnable()
     {
-       
-        _currentAngleRotate = 0;
+        _isReverse = false;
+        _currentAngleRotate = _startAngle;
     }
        
 
@@ -37,9 +38,9 @@ public class CheckingAreal : State
 
     private void ChangeTargetRotate()
     {
-        if (!isReverse)
+        if (!_isReverse)
         {
-            if (_currentAngleRotate >= _angleToCheck)
+            if (_currentAngleRotate >= _angleToCheck - _startAngle)
             {
                 Inverse();
                 
@@ -47,7 +48,7 @@ public class CheckingAreal : State
         }
         else
         {
-            if (_currentAngleRotate <= _angleToCheck)
+            if (_currentAngleRotate <= _angleToCheck + _startAngle)
             {
                 Inverse();
                
@@ -68,6 +69,6 @@ public class CheckingAreal : State
     {
         _angleToCheck = -_angleToCheck;
         _stepToRotate = -_stepToRotate;
-         isReverse = !isReverse;
+         _isReverse = !_isReverse;
     }
 }
