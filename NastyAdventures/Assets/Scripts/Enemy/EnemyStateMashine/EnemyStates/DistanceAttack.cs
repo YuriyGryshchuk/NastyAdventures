@@ -16,6 +16,8 @@ public class DistanceAttack : State
     private float _currentTime;
     private GameObject _curentBoll;
     private Boll _bollScript;
+    private bool _needTransitToPrevious;
+    private bool _needTransitToNext;
 
 
     Mover mover = new Mover();
@@ -24,7 +26,10 @@ public class DistanceAttack : State
     {
         _controller = GetComponent<CharacterController>();
         _currentTime = 0;
-        //_triggerToPlayer.TargetChanged += ChangedTarget;
+        _needTransitToNext = false;
+        _needTransitToPrevious = false;
+        _triggerToPlayer.TargetChanged += ChangedTarget;
+
     }
 
     private void Update()
@@ -35,7 +40,7 @@ public class DistanceAttack : State
 
         Timer();
         AttackTarget();
-
+        Exit();
     }
 
     private void AttackTarget()
@@ -45,7 +50,9 @@ public class DistanceAttack : State
             _curentBoll = Instantiate(_boll, _bollSpawn.position, Quaternion.identity);
             _bollScript = _curentBoll.GetComponent<Boll>();
             _bollScript.Init(_bollSpeed, Target.transform.position);
+            _bollScript.HitedTarget += HitedTarget;
             _currentTime = 0;
+            _needTransitToPrevious = true;
         }
     }
 
@@ -54,8 +61,30 @@ public class DistanceAttack : State
         _currentTime += Time.deltaTime;
     }
 
+    private void HitedTarget()
+    {
+        _needTransitToNext = true;
+    }
 
+    private void ChangedTarget(Player player)
+    {
+        _needTransitToPrevious = false;
+    }
 
-    
+    public override void Exit()
+    {
+        if (_needTransitToPrevious)
+        {
+            StateMashine.TransitToPrevious();
+            _triggerToPlayer.TargetChanged -= ChangedTarget;
+            _bollScript.HitedTarget -= HitedTarget;
+        }
 
- }
+        if (_needTransitToNext)
+        {
+            StateMashine.TransitToNext();
+            _triggerToPlayer.TargetChanged -= ChangedTarget;
+            _bollScript.HitedTarget -= HitedTarget;
+        }
+    }
+}

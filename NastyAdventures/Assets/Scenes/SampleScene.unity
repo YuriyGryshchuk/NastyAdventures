@@ -360,6 +360,7 @@ MonoBehaviour:
   _states:
   - {fileID: 313043104}
   - {fileID: 313043103}
+  - {fileID: 313043096}
   _target: {fileID: 1433168628}
 --- !u!195 &313043100
 NavMeshAgent:
