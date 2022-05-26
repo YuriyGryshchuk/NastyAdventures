@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class KillingTarget: State
 {
+    [SerializeField] private Canvas _deadCanvas;
+
     private void OnEnable()
     {
-        Time.timeScale = 0;
-        Debug.Log("You are dead!");
-
+        _deadCanvas.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1;
     }
 
 }
