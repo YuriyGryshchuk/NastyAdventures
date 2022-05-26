@@ -43,9 +43,9 @@ public class DistanceAttack : State
         if (_currentTime >= _timeBetweenAttacks)
         {
             Instantiate(_boll, _bollSpawn.position, Quaternion.identity);
-            _currentTime = 0;
             _bollScript = _curentBoll.GetComponent<Boll>();
             _bollScript.Init(_bollSpeed, Target.transform.position);
+            _currentTime = 0;
         }
     }
 
