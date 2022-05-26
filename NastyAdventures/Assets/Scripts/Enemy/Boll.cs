@@ -16,11 +16,6 @@ public class Boll : MonoBehaviour
 
     Gravity gravity = new Gravity();
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed);
