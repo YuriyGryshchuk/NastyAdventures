@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:NastyAdventures/Assets/Scripts/Player/BasicStats.cs.meta
-guid: 0c348c111e453fa4a9575dee0a517b96
-========
-guid: e030dd66b1b9fcc4d88d30151b4df7ce
->>>>>>>> main:NastyAdventures/Assets/Scripts/Enemy/EnemyStateMashine/EnemyStates/CheckingAreal.cs.meta
+guid: 01cd7e9a8eae7204582b39720705e6cc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

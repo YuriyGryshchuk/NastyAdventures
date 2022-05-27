@@ -13,13 +13,13 @@ public class Mover
         return move;
     }
 
-    public Vector3 GetVectorToTarget(CharacterController executor, Player target, float _speedToRotate)
+    public Vector3 GetVectorToTarget(CharacterController executor, Player target, float speedToRotate)
     {
         Vector3 trueDirection = target.transform.position;
         trueDirection.y = executor.transform.position.y;
 
         Vector3 targetDirection = trueDirection - executor.transform.position;
-        float singleStep = _speedToRotate * Time.deltaTime;
+        float singleStep = speedToRotate * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(executor.transform.forward, targetDirection, singleStep, 0.0f);
         return newDirection;
     }

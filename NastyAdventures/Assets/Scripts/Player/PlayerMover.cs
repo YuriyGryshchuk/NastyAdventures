@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(Player))]
 public class PlayerMover : MonoBehaviour
 {
-    private Player _player;
-
-
     [SerializeField] private CharacterController _playerController;    
-  
     [SerializeField] private float _groundDistance = 0.4f;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundMask;
 
+    private Player _player;
     private Vector3 _vectorToMove;
     private bool _isGrounded;
     private float _speed;
