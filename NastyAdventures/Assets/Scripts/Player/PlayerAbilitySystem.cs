@@ -10,6 +10,8 @@ public class PlayerAbilitySystem : MonoBehaviour
 
     public UnityEvent<int> onCastAbility;
 
+    private Stack<IStatsProvider> _downStatsStack;
+
     private void Start()
     {
         
@@ -25,7 +27,6 @@ public class PlayerAbilitySystem : MonoBehaviour
       
         if (Input.GetButtonDown("Ability1") && _playerAbilitys[0] != null)
         {
-            
             
             onCastAbility?.Invoke(0);
 
@@ -54,8 +55,10 @@ public class PlayerAbilitySystem : MonoBehaviour
 
     private void CastAbility(int indexAbility)
     {
+        
+
         _playerAbilitys[indexAbility].Init(_player._stats);
-        _player.SetStats(_playerAbilitys[indexAbility]);
+        _player.SetAbility(_playerAbilitys[indexAbility]);
        
     }
     
