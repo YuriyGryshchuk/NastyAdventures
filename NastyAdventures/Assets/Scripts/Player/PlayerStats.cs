@@ -10,7 +10,7 @@ public struct PlayerStats
     public float JumpHeight { get; set; }
     public float Mass { get; set; }
 
-    
+    public bool IsInvisible { get; set; }
 
     
   

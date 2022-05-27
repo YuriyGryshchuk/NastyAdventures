@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     public IStatsProvider _stats { get; private set; }
 
-
+    
     
 
     [SerializeField] private float _walkSpeed = 10F;

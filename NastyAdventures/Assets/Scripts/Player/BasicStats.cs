@@ -8,7 +8,7 @@ public class BasicStats :  IStatsProvider
      private float _runSpeed;
      private float _jumpHeight;
      private float _mass;
-
+    private bool _isInvisible;
 
 
     public BasicStats(float walkSpeed, float runSpeed, float jumpHeight, float mass)
@@ -17,7 +17,7 @@ public class BasicStats :  IStatsProvider
         _runSpeed = runSpeed;
         _jumpHeight = jumpHeight;
         _mass = mass;
-   
+    
     }
   
 
@@ -28,7 +28,8 @@ public class BasicStats :  IStatsProvider
             WalkSpeed = _walkSpeed,
             RunSpeed = _runSpeed,
             JumpHeight = _jumpHeight,
-            Mass = _mass
+            Mass = _mass,
+            IsInvisible = false
         };
     }
 }
