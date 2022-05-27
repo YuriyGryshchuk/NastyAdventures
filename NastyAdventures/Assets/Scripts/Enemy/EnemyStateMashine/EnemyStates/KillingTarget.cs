@@ -10,7 +10,7 @@ public class KillingTarget: State
     {
         _deadCanvas.enabled = true;
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
 }

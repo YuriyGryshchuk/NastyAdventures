@@ -14,14 +14,20 @@ public class DeadCanvas : MonoBehaviour
         _deadCanvas.enabled = false;
     }
 
-    private void Update()
+    private void OnEnable()
     {
         _restartButton.onClick.AddListener(RestartLevel);
     }
 
+    private void OnDisable()
+    {
+        _restartButton.onClick.RemoveListener(RestartLevel);
+    }
+
     public void RestartLevel()
     {
+        Time.timeScale = 1;
         Debug.Log("restart");
-        SceneManager.LoadScene("1");
+        SceneManager.LoadScene(0);
     }
 }
