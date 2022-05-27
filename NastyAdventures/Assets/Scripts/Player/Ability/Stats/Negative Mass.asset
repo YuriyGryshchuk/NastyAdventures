@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Negative Mass
   m_EditorClassIdentifier: Assembly-CSharp::NegativeMass
-  _massMultiplier: 0
+  _timeAbility: 3
+  _massMultiplier: -1

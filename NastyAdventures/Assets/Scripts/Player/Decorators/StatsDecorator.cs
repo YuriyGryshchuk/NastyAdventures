@@ -8,7 +8,7 @@ public abstract class StatsDecorator : ScriptableObject, IStatsProvider
 
     protected IStatsProvider _wrappedEntity;
 
-
+    [SerializeField] private float _timeAbility;
    
   
    
@@ -29,6 +29,9 @@ public abstract class StatsDecorator : ScriptableObject, IStatsProvider
     {
         return GetStatsInternal();
     }
-
+    public float GetTimeAbility()
+    {
+        return _timeAbility;
+    }
     protected abstract PlayerStats GetStatsInternal();
 }

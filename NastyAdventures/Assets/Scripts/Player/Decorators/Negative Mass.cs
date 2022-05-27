@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class NegativeMass : StatsDecorator
 {
-    [SerializeField] [Min(1)]  private float _massMultiplier;
+    [SerializeField]   private float _massMultiplier;
 
 
     

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9882cb82365aec6479e915db389bf28c, type: 3}
   m_Name: HighJump
   m_EditorClassIdentifier: 
+  _timeAbility: 7
   _jumpMultiplier: 5

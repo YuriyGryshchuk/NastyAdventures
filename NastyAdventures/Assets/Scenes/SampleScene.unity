@@ -1922,6 +1922,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6aa48424482061949b838f37fb27cadf, type: 2}
   - {fileID: 11400000, guid: a71ff92d1bad3994393da0af787d557f, type: 2}
   - {fileID: 11400000, guid: 9e93a2fe86e94254ea0cafaa3bc7f2f5, type: 2}
+  - {fileID: 0}
   onCastAbility:
     m_PersistentCalls:
       m_Calls: []
