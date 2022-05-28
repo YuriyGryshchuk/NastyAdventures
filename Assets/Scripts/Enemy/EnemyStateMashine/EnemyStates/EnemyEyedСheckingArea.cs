@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class СheckingArea : State
+public class EnemyEyedСheckingArea: State
 {
     [SerializeField] private TriggerToPlayer _triggerToPlayer;
     [SerializeField] private float _timeEnemyWaking = 10f;
